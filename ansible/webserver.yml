@@ -1,0 +1,17 @@
+---
+- name: Webserver
+  hosts: webserver
+  remote_user: deploy
+  sudo: yes
+  vars_files:
+    - "../config/config.yml"
+
+  roles:
+    - common
+    - nginx
+    - mysql
+    - php
+    - nodejs
+    - bower
+    - grunt
+    - {role: adminer, when: inventory_hostname == "localhost"}

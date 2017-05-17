@@ -1,0 +1,15 @@
+- name: Add PPA repository (Ubuntu)
+  apt_repository:
+    repo: ppa:ondrej/php
+    update_cache: true
+  when: ansible_distribution == "Ubuntu"
+
+- name: install php mysql modules
+  apt: pkg=php5.6-mysql state=present
+  notify:
+    - php-fpm-restart
+    - nginx-restart
+
+- name: install php5 sqlite3 driver
+  apt: pkg=php5.6-sqlite3 state=present	
+  when: inventory_hostname == "localhost"

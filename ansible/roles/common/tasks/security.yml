@@ -1,0 +1,7 @@
+---
+- name: security install
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - fail2ban
+    - rkhunter
+    - lynis

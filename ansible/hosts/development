@@ -1,0 +1,4 @@
+# file: development
+
+[webserver]
+localhost ansible_connection=local

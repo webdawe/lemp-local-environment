@@ -1,0 +1,11 @@
+---
+- name: PHP
+  hosts: webserver
+  remote_user: deploy
+  sudo: yes
+  vars_files:
+    - "../config/config.yml"
+
+  roles:
+   - php
+  

@@ -1,0 +1,12 @@
+---
+- name: Self Signed SSL
+  hosts: webserver
+  remote_user: deploy
+  sudo: yes
+  vars_files:
+    - "../config/config.yml"
+
+  roles:
+    - role: selfsignedssl
+      ssl_certs_privkey_path: '/etc/ssl/certs/webdawe.dev.key'
+      ssl_certs_cert_path: '/etc/ssl/certs/webdawe.dev.pem'

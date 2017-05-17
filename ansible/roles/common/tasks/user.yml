@@ -1,0 +1,7 @@
+---
+- name: user root
+  copy: src=/vagrant/files/dot/.bashrc dest=/root/.bashrc owner=root group=root
+
+- name: user ubuntu
+  copy: src=/vagrant/files/dot/.bashrc dest=/home/ubuntu/.bashrc owner=ubuntu group=ubuntu
+  when: inventory_hostname == "localhost"

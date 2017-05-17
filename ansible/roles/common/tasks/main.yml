@@ -1,0 +1,21 @@
+---
+- name: apt cache
+  apt: update_cache=yes
+
+- name: Install common packages
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - sudo
+    - vim
+    - htop
+    - iftop
+    - iotop
+    - git
+    - build-essential
+    - python-software-properties
+    - python-pycurl
+
+- include: security.yml
+- include: ufw.yml
+- include: ssh.yml
+- include: user.yml

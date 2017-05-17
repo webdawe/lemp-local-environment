@@ -1,0 +1,29 @@
+---
+- name: ufw install
+  apt: name=ufw state=latest
+
+- name: ufw configure
+  command: ufw allow {{ item }}
+  with_items:
+    - 22 #ssh
+    - 80 #http
+    - 443 #https
+
+- name: ufw configure samba
+  command: ufw allow {{ item }}
+  with_items:
+    - 137
+    - 138
+    - 139
+    - 445
+    - 8182
+  when: inventory_hostname == "localhost"
+
+- name: ufw configure mailcatcher
+  command: ufw allow {{ item }}
+  with_items:
+    - 1080
+  when: inventory_hostname == "localhost"
+
+- name: ufw enable
+  command: ufw --force enable

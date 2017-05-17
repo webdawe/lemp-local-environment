@@ -1,0 +1,18 @@
+---
+- name: add php packages
+  include_vars: "packages.yml"
+
+- include: fpm.yml
+- include: cli.yml
+- include: cache.yml
+- include: composer.yml
+- include: sql.yml
+
+- name: install php common modules
+  apt: pkg={{ item }} state=latest
+  with_items: "{{php_common}}"
+  notify:
+    - nginx-restart
+    - php-fpm-restart	
+
+- {include: xdebug.yml, when: inventory_hostname == "localhost"}
