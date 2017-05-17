@@ -37,7 +37,7 @@ Code Folder to share - Host Source and VM Destination
 as per following settings, each website's code should be placed inside sites folder on the root.
 for webdawe website, code should be cloned to ~/sites/webdawe which will be the document root in the virtual machine.
 ```
-VM_CODE_SOURCE = '/path/to/code/source/'
+VM_CODE_SOURCE = '/home/webawe/sites'
 VM_CODE_DESTINATION = '/var/www/'
 ```
 Virtual Host and MySQL Settings should be placed on config/config.yml File
